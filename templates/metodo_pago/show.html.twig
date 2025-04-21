@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MetodoPago{% endblock %}
+
+{% block body %}
+    <h1>MetodoPago</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ metodo_pago.id }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ metodo_pago.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ metodo_pago.estado }}</td>
+            </tr>
+            <tr>
+                <th>Referencia</th>
+                <td>{{ metodo_pago.referencia }}</td>
+            </tr>
+            <tr>
+                <th>Descuento</th>
+                <td>{{ metodo_pago.descuento }}</td>
+            </tr>
+            <tr>
+                <th>Porcentaje</th>
+                <td>{{ metodo_pago.porcentaje }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_metodo_pago_index') }}">back to list</a>
+
+    <a href="{{ path('app_metodo_pago_edit', {'id': metodo_pago.id}) }}">edit</a>
+
+    {{ include('metodo_pago/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Dasboard Administrador index{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button type="button" id="sidebarCollapse" class="btn btn-dark mr-2">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img src="{{ logo }}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-user-circle mr-1"></i> Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-cog mr-1"></i> Configuración</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt mr-1"></i> Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Sidebar -->
+    {% include "bar_nav_dashboard_admin.html.twig" %}
+
+    <!-- Contenido Principal -->
+    <div id="content" style="padding:20px !important">
+        <div class="row">
+            <div class='col-12 col-md-12 col-lg-12'>&nbsp;</div>
+        </div>
+        <div class="container-fluid p-4">
+            <h2>Bienvenido al Sistema</h2>
+            <p>Dashboard del Administrador</p>
+            
+            <div class="card mt-4">
+                <div class="card-header text-center">
+                    <h4>{{ mes }}</h4>
+                </div>
+                <div class="card-body" style="margin:auto !important">
+                    <div id="piechart_3d" style="width: 80%; height: 50%;"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- para cargar el grafico -->
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+
+        chart.draw(data, options);
+      }
+    </script>
+{% endblock %}

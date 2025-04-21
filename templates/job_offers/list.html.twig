@@ -1,0 +1,83 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}OSolicitidues de las Empresas Afiliadas{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button type="button" id="sidebarCollapse" class="btn btn-dark mr-2">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img src="{{ logo }}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-user-circle mr-1"></i> Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-cog mr-1"></i> Configuración</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt mr-1"></i> Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Sidebar -->
+    {% include "bar_nav_dashboard_admin.html.twig" %}
+
+    <!-- Contenido Principal -->
+    <div id="content" style="padding:20px !important;">
+        <div class="row">
+            <div class='col-12 col-md-12 col-lg-12'>&nbsp;</div>
+        </div>
+        <div class="container-fluid p-4">
+            <h2>Bienvenido al Sistema</h2>
+            <p>Solicitudes Registradas</p>
+        </div>
+        <div class="row">
+            <div class='col-12 col-md-10 col-lg-10' style="margin: auto !important;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titulo</th>
+                            <th>Descripcion</th>
+                            <th>Fecha_publicacion</th>
+                            <th>Fecha_finalizacion</th>
+                            <th>Fecha_atencion</th>
+                            <th>Estado</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for job_offer in job_offers %}
+                        <tr>
+                            <td>{{ job_offer.id }}</td>
+                            <td>{{ job_offer.titulo }}</td>
+                            <td>{{ job_offer.descripcion }}</td>
+                            <td>{{ job_offer.fechaPublicacion ? job_offer.fechaPublicacion|date('Y-m-d') : '' }}</td>
+                            <td>{{ job_offer.fechaFinalizacion ? job_offer.fechaFinalizacion|date('Y-m-d') : '' }}</td>
+                            <td>{{ job_offer.fechaAtencion ? job_offer.fechaAtencion|date('Y-m-d') : '' }}</td>
+                            <td>{{ job_offer.estado }}</td>
+                            <td>
+                                <a href="{{ path('app_job_offers_show', {'id': job_offer.id}) }}">show</a>
+                                <a href="{{ path('app_job_offers_edit', {'id': job_offer.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class='text-danger'>No se han registrado solicitudes</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

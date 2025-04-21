@@ -1,0 +1,260 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrada al sistema{% endblock %}
+{% block stylesheets %}
+            <style>
+                .sidebar {
+                    position: fixed;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 100;
+                    padding: 48px 0 0;
+                    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+                }
+                
+                .sidebar .sidebar-sticky {
+                    position: relative;
+                    top: 0;
+                    height: calc(100vh - 48px);
+                    padding-top: .5rem;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                }
+                
+                .main {
+                    padding-top: 48px;
+                }
+                
+                /* Estilos para el menú lateral expandido */
+                .sidebar.active {
+                    left: -250px; /* Oculta el menú lateral */
+                }
+                
+                /* Estilos para el botón de expandir */
+                #sidebarCollapse {
+                    position: fixed;
+                    top: 10px;
+                    left: 10px;
+                    z-index: 999;
+                }         
+                
+                .login_card {
+                vertical-align: middle !important;
+                width:300px !important;
+                left:15px !important;
+                  box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
+                }
+                .centrado {
+                    position: absolute !important;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }         
+                .btn-primary{
+                    background-color: #1b262c; /* Un azul bonito */
+                    color: white; /* Texto blanco para que contraste */
+                    border-color : #1b262c;
+                    border-radius : 15px;                   
+                }       
+                </style>
+        {% endblock %}
+{% block body %}
+    <div id="websiteHeader">
+        <nav id="mainNav"
+            class="hidden-xs navbar-default navbar-fixed-top opacity-no affix-top escm-observing">
+            <div class="site_container">
+                <div class="navbar-header">
+                    <a href="/"
+                        class="logo_name navbar-brand s123-w-l-s page-unique s123-fast-page-load"
+                        data-pjax-state><img src="{{ logo }}" width="170px"></a>
+                </div>
+                <div id="top-menu">
+                    <ul class="navPages nav navbar-nav"
+                        style="opacity: 1">
+                        <li class="moduleMenu active">
+                            <a
+                                class="page-unique homepageMenu s123-fast-page-load"
+                                href="/#s123PjaxMainContainer" data-pjax-state><span
+                                    class="txt-container">Home</span></a>
+                        </li>
+                        <li class="moduleMenu"
+                            data-menu-module-id="67dd601bbcc5a">
+                            <a class="page-unique s123-fast-page-load"
+                                href="/#section-67dd601bbcc5a"
+                                data-pjax-state><span
+                                    class="txt-container">Sobre Nosotros</span></a>
+                        </li>
+                        <li class="moduleMenu"
+                            data-menu-module-id="67dd601d02a74">
+                            <a class="page-unique s123-fast-page-load"
+                                href="/#section-67dd601d02a74"
+                                data-pjax-state><span
+                                    class="txt-container">Testimonios</span></a>
+                        </li>
+                        <li class="moduleMenu"
+                            data-menu-module-id="67dd601db4471">
+                            <a class="page-unique s123-fast-page-load"
+                                href="/#contacto" data-pjax-state><span
+                                    class="txt-container">Contacto</span></a>
+                        </li>
+                        <li class="moduleMenu"
+                            data-menu-module-id="67dd601bc77cb">
+                            <a class="page-unique s123-fast-page-load"
+                                href="/login" data-pjax-state><span
+                                    class="txt-container">login</span></a>
+                        </li>
+                    </ul>
+                    <ul class="navActions nav navbar-nav"
+                        style="opacity: 1">
+                        <li class="header-cart-wrapper orderOpenCart"
+                            data-has-online-store="false"
+                            style="display: none">
+                            <a
+                                class="actionButton btn-primary-action-button-4"
+                                role="button"><i
+                                    class="svg-m s123-icon-converter"
+                                    data-icon-name="shopping-cart"
+                                    style="
+                mask: url('assets/images/shopping-cart.svg?v=2');
+                -webkit-mask: url('assets/images/shopping-cart.svg?v=2');
+                " data-ie11-classes alt="shopping-cart">&nbsp;</i><span
+                                    class="count"
+                                    style="display: none"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Sticky Menu -->
+        <input type="hidden" id="stickyMenu" name="stickyMenu"
+            value="on" />
+    </div>
+    <nav id="mainNavMobile" class="navbar-fixed-top" style="opacity: 1">
+        <div class="navPagesLeft">
+            <div class="header-menu-wrapper">
+                <a data-close-location="left" data-menu-color
+                    data-menu-type="0" data-menu-align="center"
+                    data-is-mobile="true"
+                    class="mobile-menu-btn actionButton" role="button"
+                    data-container="body"
+                    data-toggle="menuCallActionIcons"><i
+                        class="svg-m s123-icon-converter"
+                        data-icon-name="bars"
+                        style="
+            mask: url('assets/images/bars.svg?v=2');
+            -webkit-mask: url('assets/images/bars.svg?v=2');
+        " data-ie11-classes alt="bars">&nbsp;</i></a>
+            </div>
+        </div>
+        <div class="navbar-header">
+            <a href="/"
+                class="logo_name navbar-brand s123-w-l-s page-unique s123-fast-page-load"
+                data-pjax-state><span
+                    class="website-name">vdesk.arsupply.net</span></a>
+        </div>
+        <div class="navPagesRight">
+            <ul class="navActions nav navbar-nav">
+                <li class="header-cart-wrapper orderOpenCart"
+                    data-has-online-store="false" style="display: none">
+                    <a class="actionButton btn-primary-action-button-4"
+                        role="button"><i
+                            class="svg-m s123-icon-converter"
+                            data-icon-name="shopping-cart" style="
+            mask: url('assets/images/shopping-cart.svg?v=2');
+            -webkit-mask: url('assets/images/shopping-cart.svg?v=2');
+            " data-ie11-classes alt="shopping-cart">&nbsp;</i><span
+                            class="count"
+                            style="display: none"></span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="top-menu-mobile" style="display: none">
+        <ul>
+            <!-- Website Menu Pages -->
+            <li class="moduleMenu active">
+                <a class="page-unique homepageMenu" href="/#s123PjaxMainContainer"><span class="txt-container">Home</span></a>
+            </li>
+            <li class="moduleMenu" data-menu-module-id="67dd601bbcc5a">
+                <a class="page-unique" href="/#section-67dd601bbcc5a"><span class="txt-container">Sobre Nosotros</span></a>
+            </li>
+            <li class="moduleMenu" data-menu-module-id="67dd601d02a74">
+                <a class="page-unique" href="/#section-67dd601d02a74"><span class="txt-container">Testimonios</span></a>
+            </li>
+            <li class="moduleMenu" data-menu-module-id="67dd601db4471">
+                <a class="page-unique" href="/#contacto"><span class="txt-container">Contacto</span></a>
+            </li>
+            <li class="moduleMenu" data-menu-module-id="67dd601bc77cb">
+                <a class="page-unique" href="/login"><span class="txt-container">login</span></a>
+            </li>
+        </ul>
+    </div>    
+
+    <!-- Contenido Principal -->
+    <div id="content" style="padding:20px !important">
+        <div class="row" style="padding-top: 20px !important">
+            <div class="col-12 col-md-8 col-lg-8" style="margin:auto !important" >
+                &nbsp;          
+            </div>
+        </div>    
+    <form action="{{ path('app_login') }}" method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                Usted se encuentra logeado como {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+        <div classs="col-12 col-sm-10 col-md-8 col-lg-4 offset-sm-1 offset-md-2 offset-lg-1" align='center'>
+            <div>
+                <div class="card centrado">
+                    <div class="card-header text-center">
+                        <h3>Entrada al sistema</h3>
+                    </div>
+                    <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-lg-12">
+                                    <label for="__sername">Email:</label>
+                                    <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control" autocomplete="email" required autofocus/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-lg-12">
+                                    <label for="password">Password:</label>
+                                    <input type="password" id="password" name="_password" class="form-control" autocomplete="current-password" required />
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                                </div>
+                            </div>
+                            <input type="hidden" name="_target_path" value="app_login">                            
+                            <div class="row">&nbsp;</div>
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-lg-12 text-right">
+                                    <button class='btn btn-primary' type="submit" >Entrar</button>
+                                </div>
+                            </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    </div>
+    <div id="showSmallAdOnScroll" class="upgrade-website-preview-helper style2 static">
+        Power by Arsupply.net
+    </div>    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>                
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });                    
+    </script>
+{% endblock %}
